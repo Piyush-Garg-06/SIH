@@ -1,0 +1,408 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Kerala Migrant Workers Health Portal</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .register-bg {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(37, 99, 235, 0.9)), url('http://static.photos/medical/1200x630/3');
+            background-size: cover;
+            background-position: center;
+        }
+        .form-step {
+            display: none;
+        }
+        .form-step.active {
+            display: block;
+        }
+        .step-indicator {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .step-indicator.completed {
+            background-color: #10B981;
+            color: white;
+        }
+        .step-indicator.current {
+            background-color: #3B82F6;
+            color: white;
+        }
+        .step-indicator.pending {
+            background-color: #E5E7EB;
+            color: #6B7280;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Top Government Banner -->
+    <div class="bg-green-700 text-white py-1 px-4 text-center text-sm">
+        <div class="container mx-auto flex justify-between items-center">
+            <span>Official Website of Kerala Government</span>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:underline">Accessibility</a>
+                <a href="#" class="hover:underline">Sitemap</a>
+                <div class="language-selector px-2 rounded">
+                    <select class="bg-transparent text-white text-sm focus:outline-none">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="bn">বাংলা</option>
+                        <option value="or">ଓଡ଼ିିଆ</option>
+                        <option value="ml">മലയാളം</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="http://static.photos/government/120x120/1" alt="Kerala Government Logo" class="h-16">
+                <div>
+                    <h1 class="text-2xl font-bold text-blue-900">Kerala Migrant Workers</h1>
+                    <h2 class="text-lg font-semibold text-blue-800">Digital Health Record Management System</h2>
+                </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium flex items-center">
+                    <i data-feather="log-in" class="mr-2"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 py-3">
+                    <li><a href="index.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="home" class="mr-1"></i> Home</a></li>
+                    <li><a href="about.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="info" class="mr-1"></i> About</a></li>
+                    <li><a href="services.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="heart" class="mr-1"></i> Services</a></li>
+                    <li><a href="healthcard.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="credit-card" class="mr-1"></i> Health Card</a></li>
+                    <li><a href="doctors.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="user-plus" class="mr-1"></i> For Doctors</a></li>
+                    <li><a href="employers.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="briefcase" class="mr-1"></i> For Employers</a></li>
+                    <li><a href="contact.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="mail" class="mr-1"></i> Contact</a></li>
+                </ul>
+                <div class="pb-3 md:pb-0">
+                    <a href="register.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded-md font-medium flex items-center">
+                        <i data-feather="user-plus" class="mr-1"></i> Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <main class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl w-full bg-white p-8 rounded-xl shadow-lg mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900">Register for Health Card</h2>
+                <p class="mt-2 text-sm text-gray-600">
+                    Already have an account? <a href="login.html" class="font-medium text-blue-600 hover:text-blue-500">Sign in here</a>
+                </p>
+            </div>
+
+            <!-- Progress Steps -->
+            <div class="flex justify-between mb-8">
+                <div class="flex items-center">
+                    <div id="step1-indicator" class="step-indicator current">1</div>
+                    <span class="text-sm font-medium">Basic Information</span>
+                </div>
+                <div class="flex-auto border-t-2 border-gray-200 mx-4 mt-4"></div>
+                <div class="flex items-center">
+                    <div id="step2-indicator" class="step-indicator pending">2</div>
+                    <span class="text-sm font-medium text-gray-500">Health Details</span>
+                </div>
+                <div class="flex-auto border-t-2 border-gray-200 mx-4 mt-4"></div>
+                <div class="flex items-center">
+                    <div id="step3-indicator" class="step-indicator pending">3</div>
+                    <span class="text-sm font-medium text-gray-500">Employment Details</span>
+                </div>
+                <div class="flex-auto border-t-2 border-gray-200 mx-4 mt-4"></div>
+                <div class="flex items-center">
+                    <div id="step4-indicator" class="step-indicator pending">4</div>
+                    <span class="text-sm font-medium text-gray-500">Review & Submit</span>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="registration-form" class="space-y-6" action="#" method="POST">
+                <!-- Step 1: Basic Information -->
+                <div id="step1" class="form-step active">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
+                            <input id="first-name" name="first-name" type="text" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="last-name" class="block text-sm font-medium text-gray-700 mb-1">Last Name *</label>
+                            <input id="last-name" name="last-name" type="text" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Gender *</label>
+                            <select id="gender" name="gender" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="dob" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth *</label>
+                            <input id="dob" name="dob" type="date" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="aadhaar" class="block text-sm font-medium text-gray-700 mb-1">Aadhaar Number *</label>
+                            <input id="aadhaar" name="aadhaar" type="text" pattern="[0-9]{12}" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="12-digit Aadhaar number">
+                        </div>
+                        <div>
+                            <label for="mobile" class="block text-sm font-medium text-gray-700 mb-1">Mobile Number *</label>
+                            <input id="mobile" name="mobile" type="tel" pattern="[0-9]{10}" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="10-digit mobile number">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input id="email" name="email" type="email" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="state" class="block text-sm font-medium text-gray-700 mb-1">Native State *</label>
+                            <select id="state" name="state" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="">Select State</option>
+                                <option value="bihar">Bihar</option>
+                                <option value="west-bengal">West Bengal</option>
+                                <option value="odisha">Odisha</option>
+                                <option value="assam">Assam</option>
+                                <option value="up">Uttar Pradesh</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Current Address in Kerala *</label>
+                        <textarea id="address" name="address" rows="3" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                        <div>
+                            <label for="district" class="block text-sm font-medium text-gray-700 mb-1">District *</label>
+                            <select id="district" name="district" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="">Select District</option>
+                                <option value="thiruvananthapuram">Thiruvananthapuram</option>
+                                <option value="kollam">Kollam</option>
+                                <option value="pathanamthitta">Pathanamthitta</option>
+                                <option value="alappuzha">Alappuzha</option>
+                                <option value="kottayam">Kottayam</option>
+                                <option value="idukki">Idukki</option>
+                                <option value="ernakulam">Ernakulam</option>
+                                <option value="thrissur">Thrissur</option>
+                                <option value="palakkad">Palakkad</option>
+                                <option value="malappuram">Malappuram</option>
+                                <option value="kozhikode">Kozhikode</option>
+                                <option value="wayanad">Wayanad</option>
+                                <option value="kannur">Kannur</option>
+                                <option value="kasargod">Kasargod</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="pincode" class="block text-sm font-medium text-gray-700 mb-1">Pincode *</label>
+                            <input id="pincode" name="pincode" type="text" pattern="[0-9]{6}" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="6-digit pincode">
+                        </div>
+                        <div>
+                            <label for="photo" class="block text-sm font-medium text-gray-700 mb-1">Upload Photo *</label>
+                            <input id="photo" name="photo" type="file" accept="image/*" required class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button type="button" onclick="nextStep(2)" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Next: Health Details <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Health Details -->
+                <div id="step2" class="form-step">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="blood-group" class="block text-sm font-medium text-gray-700 mb-1">Blood Group</label>
+                            <select id="blood-group" name="blood-group" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="height" class="block text-sm font-medium text-gray-700 mb-1">Height (cm)</label>
+                            <input id="height" name="height" type="number" min="100" max="250" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="weight" class="block text-sm font-medium text-gray-700 mb-1">Weight (kg)</label>
+                            <input id="weight" name="weight" type="number" min="30" max="200" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="disabilities" class="block text-sm font-medium text-gray-700 mb-1">Any Disabilities?</label>
+                            <select id="disabilities" name="disabilities" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Do you have any of the following chronic conditions?</label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="flex items-center">
+                                <input id="diabetes" name="conditions" type="checkbox" value="diabetes" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="diabetes" class="ml-2 block text-sm text-gray-900">Diabetes</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="hypertension" name="conditions" type="checkbox" value="hypertension" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="hypertension" class="ml-2 block text-sm text-gray-900">Hypertension</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="asthma" name="conditions" type="checkbox" value="asthma" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="asthma" class="ml-2 block text-sm text-gray-900">Asthma</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="tb" name="conditions" type="checkbox" value="tb" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="tb" class="ml-2 block text-sm text-gray-900">Tuberculosis</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="heart" name="conditions" type="checkbox" value="heart" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="heart" class="ml-2 block text-sm text-gray-900">Heart Disease</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="none" name="conditions" type="checkbox" value="none" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="none" class="ml-2 block text-sm text-gray-900">None</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Vaccination History</label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="flex items-center">
+                                <input id="covid" name="vaccinations" type="checkbox" value="covid" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="covid" class="ml-2 block text-sm text-gray-900">COVID-19</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="measles" name="vaccinations" type="checkbox" value="measles" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="measles" class="ml-2 block text-sm text-gray-900">Measles</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="hepatitis" name="vaccinations" type="checkbox" value="hepatitis" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="hepatitis" class="ml-2 block text-sm text-gray-900">Hepatitis B</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="allergies" class="block text-sm font-medium text-gray-700 mb-1">Known Allergies (if any)</label>
+                        <textarea id="allergies" name="allergies" rows="2" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <button type="button" onclick="prevStep(1)" class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <i data-feather="arrow-left" class="mr-2 w-4 h-4"></i> Previous
+                        </button>
+                        <button type="button" onclick="nextStep(3)" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Next: Employment Details <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Employment Details -->
+                <div id="step3" class="form-step">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="employment-type" class="block text-sm font-medium text-gray-700 mb-1">Type of Employment *</label>
+                            <select id="employment-type" name="employment-type" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="">Select Employment Type</option>
+                                <option value="construction">Construction Worker</option>
+                                <option value="domestic">Domestic Worker</option>
+                                <option value="agriculture">Agriculture Laborer</option>
+                                <option value="factory">Factory Worker</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="employer-name" class="block text-sm font-medium text-gray-700 mb-1">Employer/Contractor Name *</label>
+                            <input id="employer-name" name="employer-name" type="text" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="employer-contact" class="block text-sm font-medium text-gray-700 mb-1">Employer Contact Number</label>
+                            <input id="employer-contact" name="employer-contact" type="tel" pattern="[0-9]{10}" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="10-digit mobile number">
+                        </div>
+                        <div>
+                            <label for="work-location" class="block text-sm font-medium text-gray-700 mb-1">Work Location District *</label>
+                            <select id="work-location" name="work-location" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="">Select District</option>
+                                <option value="thiruvananthapuram">Thiruvananthapuram</option>
+                                <option value="kollam">Kollam</option>
+                                <option value="pathanamthitta">Pathanamthitta</option>
+                                <option value="alappuzha">Alappuzha</option>
+                                <option value="kottayam">Kottayam</option>
+                                <option value="idukki">Idukki</option>
+                                <option value="ernakulam">Ernakulam</option>
+                                <option value="thrissur">Thrissur</option>
+                                <option value="palakkad">Palakkad</option>
+                                <option value="malappuram">Malappuram</option>
+                                <option value="kozhikode">Kozhikode</option>
+                                <option value="wayanad">Wayanad</option>
+                                <option value="kannur">Kannur</option>
+                                <option value="kasargod">Kasargod</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="work-address" class="block text-sm font-medium text-gray-700 mb-1">Work Site Address *</label>
+                            <textarea id="work-address" name="work-address" rows="2" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                        </div>
+                        <div>
+                            <label for="duration" class="block text-sm font-medium text-gray-700 mb-1">Duration of Stay in Kerala *</label>
+                            <select id="duration" name="duration" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="">Select Duration</option>
+                                <option value="less-6">Less than 6 months</option>
+                                <option value="6-12">6-12 months</option>
+                                <option value="1-3">1-3 years</option>
+                                <option value="3+">More than 3 years</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="family-members" class="block text-sm font-medium text-gray-700 mb-1">Family Members in Kerala (if any)</label>
+                        <textarea id="family-members" name="family-members" rows="2" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Names and relationships"></textarea>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <button type="button" onclick="prevStep(2)" class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <i data-feather="arrow-left" class="mr-2 w-4 h-4"></i> Previous
+                        </button>
+                        <button type="button" onclick="nextStep(4)" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Next: Review & Submit <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Review & Submit -->
+                <div id="step4" class="form-step">
+                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                        <h3 class="text-lg font-medium text-blue-800 mb-2">Review Your Information</h3>
+                        <p class="text-sm text-blue-700">Please review all the information you've entered before submitting. You can go back to previous steps to make corrections if needed.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-medium text-gray-900 border-b pb-2 mb-3">Basic Information</h4>
+</body>
+</html>

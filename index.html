@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala Migrant Workers Health Portal</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+        }
+        .govt-card {
+            border-left: 4px solid #2563eb;
+            transition: all 0.3s ease;
+        }
+        .govt-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .language-selector {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Top Government Banner -->
+    <div class="bg-green-700 text-white py-1 px-4 text-center text-sm">
+        <div class="container mx-auto flex justify-between items-center">
+            <span>Official Website of Kerala Government</span>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:underline">Accessibility</a>
+                <a href="#" class="hover:underline">Sitemap</a>
+                <div class="language-selector px-2 rounded">
+                    <select class="bg-transparent text-white text-sm focus:outline-none">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="bn">বাংলা</option>
+                        <option value="or">ଓଡ଼ିିଆ</option>
+                        <option value="ml">മലയാളം</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="http://static.photos/government/120x120/1" alt="Kerala Government Logo" class="h-16">
+                <div>
+                    <h1 class="text-2xl font-bold text-blue-900">Kerala Migrant Workers</h1>
+                    <h2 class="text-lg font-semibold text-blue-800">Digital Health Record Management System</h2>
+                </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium flex items-center">
+                    <i data-feather="log-in" class="mr-2"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 py-3">
+                    <li><a href="index.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="home" class="mr-1"></i> Home</a></li>
+                    <li><a href="about.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="info" class="mr-1"></i> About</a></li>
+                    <li><a href="services.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="heart" class="mr-1"></i> Services</a></li>
+                    <li><a href="healthcard.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="credit-card" class="mr-1"></i> Health Card</a></li>
+                    <li><a href="doctors.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="user-plus" class="mr-1"></i> For Doctors</a></li>
+                    <li><a href="employers.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="briefcase" class="mr-1"></i> For Employers</a></li>
+                    <li><a href="contact.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="mail" class="mr-1"></i> Contact</a></li>
+                </ul>
+                <div class="pb-3 md:pb-0">
+                    <a href="register.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded-md font-medium flex items-center">
+                        <i data-feather="user-plus" class="mr-1"></i> Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl font-bold mb-4">Digital Health Records for Migrant Workers</h1>
+                    <p class="text-xl mb-6">Ensuring accessible healthcare for all migrant workers in Kerala through a centralized digital health record system.</p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="register.html" class="bg-white text-blue-800 hover:bg-gray-100 px-6 py-3 rounded-md font-bold text-center">Register Now</a>
+                        <a href="healthcard.html" class="border-2 border-white text-white hover:bg-white hover:text-blue-800 px-6 py-3 rounded-md font-bold text-center">About Health Card</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <img src="http://static.photos/medical/600x400/1" alt="Healthcare for migrant workers" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="bg-gray-100 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="healthcard.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                    <i data-feather="credit-card" class="text-blue-600 w-8 h-8 mb-2"></i>
+                    <span class="font-medium">Apply for Health Card</span>
+                </a>
+                <a href="find-doctor.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                    <i data-feather="search" class="text-blue-600 w-8 h-8 mb-2"></i>
+                    <span class="font-medium">Find a Doctor</span>
+                </a>
+                <a href="schemes.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                    <i data-feather="award" class="text-blue-600 w-8 h-8 mb-2"></i>
+                    <span class="font-medium">Health Schemes</span>
+                </a>
+                <a href="faq.html" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                    <i data-feather="help-circle" class="text-blue-600 w-8 h-8 mb-2"></i>
+                    <span class="font-medium">FAQs</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-12" data-aos="fade-up">Key Features of the System</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="govt-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i data-feather="user" class="text-blue-600 w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-900">Unique Health ID</h3>
+                    </div>
+                    <p class="text-gray-600">Each migrant worker receives a unique health ID and digital health card for lifetime medical records.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="govt-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i data-feather="database" class="text-green-600 w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-900">Centralized Records</h3>
+                    </div>
+                    <p class="text-gray-600">All medical history stored securely in one place, accessible to authorized healthcare providers.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="govt-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i data-feather="bell" class="text-purple-600 w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-900">Health Alerts</h3>
+                    </div>
+                    <p class="text-gray-600">Receive SMS/email notifications for checkups, vaccination reminders, and health advisories.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="govt-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                            <i data-feather="shield" class="text-yellow-600 w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-900">Disease Prevention</h3>
+                    </div>
+                    <p class="text-gray-600">Early detection and tracking of communicable diseases to protect public health.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="govt-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 p-3 rounded-full mr-4">
+                            <i data-feather="dollar-sign" class="text-red-600 w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-900">Scheme Benefits</h3>
+                    </div>
+                    <p class="text-gray-600">Direct access to government health schemes without intermediaries or paperwork.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="govt-card bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i data-feather="globe" class="text-indigo-600 w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-900">Multilingual Support</h3>
+                    </div>
+                    <p class="text-gray-600">Available in multiple languages including Hindi, Bengali, Odia, and Malayalam.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-12" data-aos="fade-up">System Impact</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl font-bold text-blue-700 mb-2">50,000+</div>
+                    <div class="text-gray-600">Registered Workers</div>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl font-bold text-blue-700 mb-2">200+</div>
+                    <div class="text-gray-600">Partner Hospitals</div>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl font-bold text-blue-700 mb-2">95%</div>
+                    <div class="text-gray-600">Vaccination Coverage</div>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-5xl font-bold text-blue-700 mb-2">10+</div>
+                    <div class="text-gray-600">Supported Languages</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-12" data-aos="fade-up">What People Say</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/80x80/1" alt="Worker" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Ramesh Kumar</h4>
+                            <p class="text-sm text-gray-500">Construction Worker from Bihar</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The health card helped me get treatment quickly when I fell sick. The doctor knew my medical history immediately."</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/80x80/2" alt="Doctor" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Dr. Priya Nair</h4>
+                            <p class="text-sm text-gray-500">General Physician, Thiruvananthapuram</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"This system has revolutionized how we treat migrant patients. Complete medical history at our fingertips improves diagnosis accuracy."</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/80x80/3" alt="Employer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Suresh Menon</h4>
+                            <p class="text-sm text-gray-500">Construction Company Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Healthier workers mean fewer sick days and better productivity. The system makes compliance with labor laws much simpler."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-blue-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">Ready to Get Started?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">Join thousands of migrant workers, employers, and healthcare providers benefiting from Kerala's Digital Health Record System.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="register.html" class="bg-white text-blue-800 hover:bg-gray-100 px-8 py-3 rounded-md font-bold">Register Now</a>
+                <a href="contact.html" class="border-2 border-white hover:bg-white hover:text-blue-800 px-8 py-3 rounded-md font-bold">Contact Support</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-blue-300">Home</a></li>
+                        <li><a href="about.html" class="hover:text-blue-300">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-blue-300">Services</a></li>
+                        <li><a href="healthcard.html" class="hover:text-blue-300">Health Card</a></li>
+                        <li><a href="faq.html" class="hover:text-blue-300">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">For Workers</h3>
+                    <ul class="space-y-2">
+                        <li><a href="register.html" class="hover:text-blue-300">Register</a></li>
+                        <li><a href="find-doctor.html" class="hover:text-blue-300">Find a Doctor</a></li>
+                        <li><a href="schemes.html" class="hover:text-blue-300">Health Schemes</a></li>
+                        <li><a href="health-tips.html" class="hover:text-blue-300">Health Tips</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">For Professionals</h3>
+                    <ul class="space-y-2">
+                        <li><a href="doctors.html" class="hover:text-blue-300">For Doctors</a></li>
+                        <li><a href="employers.html" class="hover:text-blue-300">For Employers</a></li>
+                        <li><a href="training.html" class="hover:text-blue-300">Training</a></li>
+                        <li><a href="resources.html" class="hover:text-blue-300">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i data-feather="phone" class="w-4 h-4 mr-2"></i> 0471-1234567</li>
+                        <li class="flex items-center"><i data-feather="mail" class="w-4 h-4 mr-2"></i> healthportal@kerala.gov.in</li>
+                        <li class="flex items-center"><i data-feather="map-pin" class="w-4 h-4 mr-2"></i> Health Department, Government of Kerala, Thiruvananthapuram</li>
+                    </ul>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="hover:text-blue-300"><i data-feather="facebook"></i></a>
+                        <a href="#" class="hover:text-blue-300"><i data-feather="twitter"></i></a>
+                        <a href="#" class="hover:text-blue-300"><i data-feather="youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2023 Kerala Migrant Workers Health Portal. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="hover:text-blue-300 mr-4">Privacy Policy</a>
+                    <a href="#" class="hover:text-blue-300 mr-4">Terms of Service</a>
+                    <a href="#" class="hover:text-blue-300">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        feather.replace();
+    </script>
+</body>
+</html>

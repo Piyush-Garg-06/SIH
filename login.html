@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Kerala Migrant Workers Health Portal</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .login-bg {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(37, 99, 235, 0.9)), url('http://static.photos/medical/1200x630/2');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Top Government Banner -->
+    <div class="bg-green-700 text-white py-1 px-4 text-center text-sm">
+        <div class="container mx-auto flex justify-between items-center">
+            <span>Official Website of Kerala Government</span>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:underline">Accessibility</a>
+                <a href="#" class="hover:underline">Sitemap</a>
+                <div class="language-selector px-2 rounded">
+                    <select class="bg-transparent text-white text-sm focus:outline-none">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="bn">বাংলা</option>
+                        <option value="or">ଓଡ଼ିିଆ</option>
+                        <option value="ml">മലയാളം</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="http://static.photos/government/120x120/1" alt="Kerala Government Logo" class="h-16">
+                <div>
+                    <h1 class="text-2xl font-bold text-blue-900">Kerala Migrant Workers</h1>
+                    <h2 class="text-lg font-semibold text-blue-800">Digital Health Record Management System</h2>
+                </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <a href="register.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium flex items-center">
+                    <i data-feather="user-plus" class="mr-2"></i> Register
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 py-3">
+                    <li><a href="index.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="home" class="mr-1"></i> Home</a></li>
+                    <li><a href="about.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="info" class="mr-1"></i> About</a></li>
+                    <li><a href="services.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="heart" class="mr-1"></i> Services</a></li>
+                    <li><a href="healthcard.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="credit-card" class="mr-1"></i> Health Card</a></li>
+                    <li><a href="doctors.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="user-plus" class="mr-1"></i> For Doctors</a></li>
+                    <li><a href="employers.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="briefcase" class="mr-1"></i> For Employers</a></li>
+                    <li><a href="contact.html" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium flex items-center"><i data-feather="mail" class="mr-1"></i> Contact</a></li>
+                </ul>
+                <div class="pb-3 md:pb-0">
+                    <a href="login.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded-md font-medium flex items-center">
+                        <i data-feather="log-in" class="mr-1"></i> Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <main class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
+            <div class="text-center">
+                <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+                <p class="mt-2 text-sm text-gray-600">
+                    Or <a href="register.html" class="font-medium text-blue-600 hover:text-blue-500">register for a new account</a>
+                </p>
+            </div>
+            <form class="mt-8 space-y-6" action="#" method="POST">
+                <div class="rounded-md shadow-sm space-y-4">
+                    <div>
+                        <label for="user-type" class="block text-sm font-medium text-gray-700 mb-1">I am a</label>
+                        <select id="user-type" name="user-type" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                            <option value="worker">Migrant Worker</option>
+                            <option value="doctor">Doctor/Healthcare Provider</option>
+                            <option value="employer">Employer/Manager</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="email-username" class="block text-sm font-medium text-gray-700 mb-1">Email or Health ID</label>
+                        <input id="email-username" name="email-username" type="text" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter your email or health ID">
+                    </div>
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter your password">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-900">Remember me</label>
+                    </div>
+
+                    <div class="text-sm">
+                        <a href="forgot-password.html" class="font-medium text-blue-600 hover:text-blue-500">Forgot your password?</a>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <i data-feather="log-in" class="h-5 w-5 text-blue-300 group-hover:text-blue-200"></i>
+                        </span>
+                        Sign in
+                    </button>
+                </div>
+            </form>
+            
+            <div class="mt-6">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-2 gap-3">
+                    <div>
+                        <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                            <i data-feather="smartphone" class="h-5 w-5"></i>
+                            <span class="ml-2">OTP Login</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                            <i data-feather="aadhar" class="h-5 w-5"></i>
+                            <span class="ml-2">Aadhaar</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-8 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-blue-300">Home</a></li>
+                        <li><a href="about.html" class="hover:text-blue-300">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-blue-300">Services</a></li>
+                        <li><a href="healthcard.html" class="hover:text-blue-300">Health Card</a></li>
+                        <li><a href="faq.html" class="hover:text-blue-300">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">For Workers</h3>
+                    <ul class="space-y-2">
+                        <li><a href="register.html" class="hover:text-blue-300">Register</a></li>
+                        <li><a href="find-doctor.html" class="hover:text-blue-300">Find a Doctor</a></li>
+                        <li><a href="schemes.html" class="hover:text-blue-300">Health Schemes</a></li>
+                        <li><a href="health-tips.html" class="hover:text-blue-300">Health Tips</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">For Professionals</h3>
+                    <ul class="space-y-2">
+                        <li><a href="doctors.html" class="hover:text-blue-300">For Doctors</a></li>
+                        <li><a href="employers.html" class="hover:text-blue-300">For Employers</a></li>
+                        <li><a href="training.html" class="hover:text-blue-300">Training</a></li>
+                        <li><a href="resources.html" class="hover:text-blue-300">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i data-feather="phone" class="w-4 h-4 mr-2"></i> 0471-1234567</li>
+                        <li class="flex items-center"><i data-feather="mail" class="w-4 h-4 mr-2"></i> healthportal@kerala.gov.in</li>
+                        <li class="flex items-center"><i data-feather="map-pin" class="w-4 h-4 mr-2"></i> Health Department, Government of Kerala, Thiruvananthapuram</li>
+                    </ul>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="hover:text-blue-300"><i data-feather="facebook"></i></a>
+                        <a href="#" class="hover:text-blue-300"><i data-feather="twitter"></i></a>
+                        <a href="#" class="hover:text-blue-300"><i data-feather="youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2023 Kerala Migrant Workers Health Portal. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="hover:text-blue-300 mr-4">Privacy Policy</a>
+                    <a href="#" class="hover:text-blue-300 mr-4">Terms of Service</a>
+                    <a href="#" class="hover:text-blue-300">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
