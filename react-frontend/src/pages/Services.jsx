@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 import GovernmentSchemes from '../components/GovernmentSchemes';
 import { Hospital, QrCode, Bell, WifiOff, Languages, Shield } from 'lucide-react';
 
@@ -55,13 +56,25 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+      <div className="bg-white text-gray-800 py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Comprehensive Healthcare Services</h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-bold mb-4 text-gray-900"
+          >
+            Comprehensive Healthcare Services
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-xl text-gray-600 max-w-3xl mx-auto"
+          >
             Complete digital healthcare solution for migrant workers with government scheme integration,
             multilingual support, and offline capabilities
-          </p>
+          </motion.p>
         </div>
       </div>
 
@@ -70,17 +83,19 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
             {tabs.map((tab) => (
-              <button
+              <motion.button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 className={`px-6 py-4 font-medium transition-colors ${
                   activeTab === tab.id
-                    ? 'text-blue-600 border-b-2 border-blue-600'
-                    : 'text-gray-600 hover:text-blue-600'
+                    ? 'text-gray-800 border-b-2 border-gray-800'
+                    : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'
                 }`}
               >
                 {tab.label}
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>
@@ -89,57 +104,93 @@ const Services = () => {
       {/* Tab Content */}
       <div className="container mx-auto px-4 py-8">
         {activeTab === 'overview' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {services.map((service) => {
               const Icon = service.icon;
               return (
-                <div key={service.title} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <motion.div
+                  key={service.title}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                  className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                >
                   <div className="flex items-center mb-4">
-                    <div className="bg-blue-100 p-3 rounded-full mr-4">
-                      <Icon className="text-blue-600 w-8 h-8" />
+                    <div className="bg-gray-100 p-3 rounded-full mr-4">
+                      <Icon className="text-gray-600 w-8 h-8" />
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
                   </div>
                   <p className="text-gray-600 mb-4">{service.description}</p>
                   <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-gray-700">
+                      <motion.li
+                        key={idx}
+                        whileHover={{ scale: 1.02 }}
+                        className="flex items-center text-sm text-gray-700"
+                      >
                         <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
                         {feature}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         )}
 
-        {activeTab === 'schemes' && <GovernmentSchemes />}
+        {activeTab === 'schemes' && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <GovernmentSchemes />
+          </motion.div>
+        )}
 
         {activeTab === 'features' && (
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-8"
+          >
             {/* Core Features */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="bg-white p-8 rounded-xl shadow-lg"
+            >
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Core Healthcare Features</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 mb-4">For Migrant Workers</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
+                      <div className="w-2 h-2 bg-gray-500 rounded-full mt-2 mr-3"></div>
                       <span>Digital health card with lifetime validity</span>
                     </li>
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
+                      <div className="w-2 h-2 bg-gray-500 rounded-full mt-2 mr-3"></div>
                       <span>Access to government health schemes</span>
                     </li>
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
+                      <div className="w-2 h-2 bg-gray-500 rounded-full mt-2 mr-3"></div>
                       <span>Medical history tracking across states</span>
                     </li>
                     <li className="flex items-start">
-                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
+                      <div className="w-2 h-2 bg-gray-500 rounded-full mt-2 mr-3"></div>
                       <span>Emergency contact and blood group info</span>
                     </li>
                   </ul>
@@ -166,10 +217,15 @@ const Services = () => {
                   </ul>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Technical Features */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="bg-white p-8 rounded-xl shadow-lg"
+            >
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Technical Capabilities</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
@@ -180,24 +236,29 @@ const Services = () => {
                   <p className="text-gray-600 text-sm">Works without internet, syncs when connected</p>
                 </div>
                 <div className="text-center">
-                  <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Shield className="text-green-600 w-8 h-8" />
+                  <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Shield className="text-blue-600 w-8 h-8" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">Secure</h3>
                   <p className="text-gray-600 text-sm">End-to-end encryption with role-based access</p>
                 </div>
                 <div className="text-center">
-                  <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Languages className="text-purple-600 w-8 h-8" />
+                  <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Languages className="text-blue-600 w-8 h-8" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">Multilingual</h3>
                   <p className="text-gray-600 text-sm">5 languages with regional dialects support</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Implementation Status */}
-            <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="bg-white p-8 rounded-xl"
+            >
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Implementation Status</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-white p-4 rounded-lg text-center">
@@ -221,8 +282,8 @@ const Services = () => {
                   <p className="text-sm text-gray-600">In Development</p>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
       </div>
     </div>
