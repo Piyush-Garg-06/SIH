@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import GovernmentSchemes from '../components/GovernmentSchemes';
-import { MdLocalHospital, MdQrCodeScanner, MdNotifications, MdOfflineBolt, MdLanguage, MdSecurity } from 'react-icons/md';
+import { Hospital, QrCode, Bell, WifiOff, Languages, Shield } from 'lucide-react';
 
 const Services = () => {
   const { t } = useTranslation();
@@ -9,37 +9,37 @@ const Services = () => {
 
   const services = [
     {
-      icon: MdLocalHospital,
+      icon: Hospital,
       title: 'Digital Health Card',
       description: 'Lifetime digital health record with QR code access at hospitals',
       features: ['Instant medical history access', 'QR code for hospitals', 'Emergency contact info', 'Blood group & allergies']
     },
     {
-      icon: MdQrCodeScanner,
+      icon: QrCode,
       title: 'Health Card Scanning',
       description: 'Scan QR codes at hospitals for instant patient data access',
       features: ['Hospital integration', 'Real-time updates', 'Secure data sharing', 'Multi-language support']
     },
     {
-      icon: MdNotifications,
+      icon: Bell,
       title: 'Smart Notifications',
       description: 'Automated alerts for health checkups, vaccinations, and scheme benefits',
       features: ['Appointment reminders', 'Health checkup alerts', 'Scheme notifications', 'Emergency alerts']
     },
     {
-      icon: MdOfflineBolt,
+      icon: WifiOff,
       title: 'Offline Data Capture',
       description: 'Collect health data offline and sync when internet is available',
       features: ['Offline form filling', 'Auto-sync when online', 'Data validation', 'Progress tracking']
     },
     {
-      icon: MdLanguage,
+      icon: Languages,
       title: 'Multi-language Support',
       description: 'Complete system in Hindi, Bengali, Odia, Malayalam, and English',
       features: ['Regional languages', 'Voice assistance', 'Document translation', 'Cultural adaptation']
     },
     {
-      icon: MdSecurity,
+      icon: Shield,
       title: 'Secure & Private',
       description: 'Role-based access control with end-to-end data encryption',
       features: ['Encrypted data storage', 'Role-based permissions', 'Audit trails', 'GDPR compliance']
@@ -90,10 +90,10 @@ const Services = () => {
       <div className="container mx-auto px-4 py-8">
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => {
+            {services.map((service) => {
               const Icon = service.icon;
               return (
-                <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div key={service.title} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                   <div className="flex items-center mb-4">
                     <div className="bg-blue-100 p-3 rounded-full mr-4">
                       <Icon className="text-blue-600 w-8 h-8" />
@@ -174,21 +174,21 @@ const Services = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <MdOfflineBolt className="text-blue-600 w-8 h-8" />
+                    <WifiOff className="text-blue-600 w-8 h-8" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">Offline-First</h3>
                   <p className="text-gray-600 text-sm">Works without internet, syncs when connected</p>
                 </div>
                 <div className="text-center">
                   <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <MdSecurity className="text-green-600 w-8 h-8" />
+                    <Shield className="text-green-600 w-8 h-8" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">Secure</h3>
                   <p className="text-gray-600 text-sm">End-to-end encryption with role-based access</p>
                 </div>
                 <div className="text-center">
                   <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <MdLanguage className="text-purple-600 w-8 h-8" />
+                    <Languages className="text-purple-600 w-8 h-8" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">Multilingual</h3>
                   <p className="text-gray-600 text-sm">5 languages with regional dialects support</p>

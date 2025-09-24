@@ -270,6 +270,16 @@ const Dashboard = () => {
     }
   };
 
+  const getUserTypeColor = (userType) => {
+    const colorMap = {
+      worker: 'bg-blue-100 text-blue-800',
+      doctor: 'bg-green-100 text-green-800',
+      employer: 'bg-purple-100 text-purple-800',
+      admin: 'bg-red-100 text-red-800',
+    };
+    return colorMap[userType] || 'bg-gray-100 text-gray-800';
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -282,11 +292,7 @@ const Dashboard = () => {
               <div className="flex items-center mt-2">
                 <span className="text-sm text-gray-500">Welcome,</span>
                 <span className="text-lg font-semibold text-blue-800 ml-1">{user.name}</span>
-                <span className={`ml-3 px-3 py-1 rounded-full text-xs font-semibold capitalize
-                  ${user.userType === 'worker' ? 'bg-blue-100 text-blue-800' :
-                    user.userType === 'doctor' ? 'bg-green-100 text-green-800' :
-                    user.userType === 'employer' ? 'bg-purple-100 text-purple-800' :
-                    'bg-red-100 text-red-800'}`}>
+                <span className={`ml-3 px-3 py-1 rounded-full text-xs font-semibold capitalize ${getUserTypeColor(user.userType)}`}>
                   {user.userType}
                 </span>
               </div>
@@ -308,7 +314,7 @@ const Dashboard = () => {
           {dashboardData.stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm border">
+              <div key={stat.label} className="bg-white p-6 rounded-lg shadow-sm border">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-600">{stat.label}</p>
@@ -329,7 +335,7 @@ const Dashboard = () => {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Important Alerts</h2>
             <div className="space-y-3">
               {dashboardData.alerts.map((alert, index) => (
-                <div key={index} className={`p-4 rounded-lg border-l-4 ${getAlertColor(alert.type)}`}>
+                <div key={index} className={`p-4 rounded-lg border-l-4 ${getAlertColor(alert.type)}`}> {/* index as key is acceptable here if alerts are not re-ordered */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <AlertTriangle className="w-5 h-5 mr-3" />
@@ -353,7 +359,7 @@ const Dashboard = () => {
               const Icon = card.icon;
               return (
                 <Link
-                  key={index}
+                  key={card.title}
                   to={card.path}
                   className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow block"
                 >

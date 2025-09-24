@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import ImageSlider from '../components/ImageSlider';
+import React from 'react';
 import {
   AlertTriangle,
   UserCheck,
@@ -98,79 +100,87 @@ const Home = () => {
     'Reduced medical leave costs'
   ];
 
-  return (
-    <div>
-      {/* Mandatory Registration Alert */}
-      {!user && (
-        <div className="bg-red-600 text-white py-4">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-center">
-              <AlertTriangle className="w-6 h-6 mr-3" />
-              <div className="text-center">
-                <h3 className="font-bold text-lg">MANDATORY REGISTRATION REQUIRED</h3>
-                <p className="text-sm">All migrant workers must register and submit health records before starting work in Kerala</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+  const useIntersectionObserver = (options) => {
+    const [isVisible, setIsVisible] = React.useState(false);
+    const ref = React.useRef(null);
+
+    React.useEffect(() => {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      }, options);
+
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+
+      return () => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+      };
+    }, [ref, options]);
+
+    return [ref, isVisible];
+  };
+
+    return (
+    <div className="overflow-x-hidden">
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl font-bold mb-6">
-              Kerala Migrant Workers Health Portal
-            </h1>
-            <p className="text-xl mb-8 leading-relaxed">
-              Mandatory digital health record system for all migrant workers in Kerala.
-              Register, submit health records, and get your Health ID before starting work.
-            </p>
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-75"></div>
+        <div className="relative z-10">
+          <ImageSlider>
+            <div className="text-center max-w-4xl mx-auto">
+              <div className="inline-block">
+                <img
+                  src="https://health.kerala.gov.in/images/health-scheme.jpg"
+                  alt="Kerala Migrant Workers"
+                  className="rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105 animate-fade-in-up"
+                />
+              </div>
+              <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h1 className="text-5xl font-bold mb-6 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+                  Kerala Migrant Workers
+                </h1>
+                <p className="text-xl mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+                  Digital Health Record Management System
+                </p>
+              </div>
 
-            {!user ? (
-              <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <Link
-                  to="/register"
-                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center justify-center transition-colors"
-                >
-                  <UserCheck className="w-6 h-6 mr-3" />
-                  Start Mandatory Registration
-                  <ArrowRight className="w-6 h-6 ml-3" />
-                </Link>
-                <Link
-                  to="/login"
-                  className="border-2 border-white text-white hover:bg-white hover:text-blue-800 px-8 py-4 rounded-lg font-bold text-lg transition-colors"
-                >
-                  Login to Portal
-                </Link>
-              </div>
-            ) : (
-              <div className="bg-white text-blue-800 p-6 rounded-lg inline-block">
-                <h3 className="font-bold text-xl mb-2">Welcome back, {user.name}!</h3>
-                <p className="text-lg">Access your health dashboard and records</p>
-                <Link
-                  to="/dashboard"
-                  className="bg-blue-600 text-white px-6 py-2 rounded mt-4 inline-block hover:bg-blue-700 transition-colors"
-                >
-                  Go to Dashboard
-                </Link>
-              </div>
-            )}
-          </div>
+              {!user ? (
+                <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+                  {/* Button removed as per request */}
+                </div>
+              ) : (
+                <div className="bg-white text-blue-800 p-6 rounded-lg inline-block shadow-lg animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+                  <h3 className="font-bold text-xl mb-2">Welcome back, {user.name}!</h3>
+                  <p className="text-lg">Access your health dashboard and records</p>
+                </div>
+              )}
+            </div>
+          </ImageSlider>
         </div>
-      </section>
+      </div>
 
       {/* Mandatory Steps Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
+        {(() => {
+          const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+          return (
+            <div ref={ref} className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-blue-900 mb-4">
+          <h2 className="text-4xl font-bold text-center text-blue-900 mb-4">
             Mandatory Registration Process
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            All migrant workers must complete these steps before starting work in Kerala
+          <p className="text-center text-gray-600 mb-16 max-w-3xl mx-auto text-lg">
+            All migrant workers must complete these steps before starting work in Kerala. It's simple, fast, and secures your health.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {mandatorySteps.map((step, index) => {
               const Icon = step.icon;
               const colorClasses = {
@@ -181,29 +191,29 @@ const Home = () => {
               };
 
               return (
-                <div key={index} className="relative">
-                  <div className={`border-2 rounded-lg p-6 text-center h-full ${colorClasses[step.color]}`}>
+                <div key={step.step} className="group relative transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl hover:-translate-y-3 rounded-lg" style={{ transitionDelay: `${index * 100}ms` }}>
+                  <div className={`border-2 rounded-lg p-6 text-center h-full ${colorClasses[step.color]} hover:bg-opacity-80`}>
                     <div className="flex justify-center mb-4">
-                      <div className="bg-white p-3 rounded-full">
-                        <Icon className="w-8 h-8" />
+                      <div className="bg-white p-4 rounded-full shadow-md transition-transform duration-300 group-hover:scale-125">
+                        <Icon className="w-8 h-8 transition-transform duration-300 group-hover:rotate-12" />
                       </div>
                     </div>
-                    <div className="bg-white text-gray-800 rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold mx-auto mb-4">
+                    <div className="bg-white text-gray-800 rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-inner">
                       {step.step}
                     </div>
                     <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
                     <p className="text-gray-700">{step.description}</p>
                     {step.required && (
                       <div className="mt-4">
-                        <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        <span className="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
                           REQUIRED
                         </span>
                       </div>
                     )}
                   </div>
                   {index < mandatorySteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2">
-                      <ArrowRight className="w-6 h-6 text-gray-400" />
+                    <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                      <ArrowRight className="w-8 h-8 text-gray-300 group-hover:text-blue-500 transition-colors" />
                     </div>
                   )}
                 </div>
@@ -211,123 +221,147 @@ const Home = () => {
             })}
           </div>
         </div>
+            </div>
+          );
+        })()}
       </section>
 
       {/* System Features */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-blue-900 mb-12">
-            System Features
-          </h2>
+      <section className="py-20 bg-gray-50">
+        {(() => {
+          const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+          return (
+            <div ref={ref} className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="container mx-auto px-4">
+                <h2 className="text-4xl font-bold text-center text-blue-900 mb-16">
+                  Advanced System Features
+                </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {systemFeatures.map((feature, index) => {
-              const Icon = feature.icon;
-              const colorClasses = {
-                purple: 'bg-purple-100 text-purple-600',
-                indigo: 'bg-indigo-100 text-indigo-600',
-                yellow: 'bg-yellow-100 text-yellow-600',
-                green: 'bg-green-100 text-green-600'
-              };
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {systemFeatures.map((feature, index) => {
+                    const Icon = feature.icon;
+                    const colorClasses = {
+                      purple: 'bg-purple-100 text-purple-600',
+                      indigo: 'bg-indigo-100 text-indigo-600',
+                      yellow: 'bg-yellow-100 text-yellow-600',
+                      green: 'bg-green-100 text-green-600'
+                    };
 
-              return (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
-                  <div className={`w-16 h-16 ${colorClasses[feature.color]} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                    <Icon className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-blue-900 mb-3">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                    return (
+                      <div key={feature.title} className="group bg-white p-8 rounded-xl shadow-lg text-center transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl hover:-translate-y-3 hover:[transform:perspective(1000px)_rotateY(10deg)]" style={{ transitionDelay: `${index * 100}ms` }}>
+                        <div className={`w-20 h-20 ${colorClasses[feature.color]} rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg transition-transform duration-300 group-hover:scale-125`}>
+                          <Icon className="w-10 h-10 transition-transform duration-300 group-hover:rotate-12" />
+                        </div>
+                        <h3 className="text-xl font-semibold text-blue-900 mb-3">{feature.title}</h3>
+                        <p className="text-gray-600">{feature.description}</p>
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
-        </div>
+              </div>
+            </div>
+          );
+        })()}
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-blue-900 mb-12">
-            Benefits for Stakeholders
-          </h2>
+      <section className="py-20 bg-white">
+        {(() => {
+          const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+          return (
+            <div ref={ref} className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="container mx-auto px-4">
+                <h2 className="text-4xl font-bold text-center text-blue-900 mb-16">
+                  Benefits for Everyone
+                </h2>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Worker Benefits */}
-            <div className="bg-blue-50 p-8 rounded-lg">
-              <h3 className="text-2xl font-semibold text-blue-900 mb-6 flex items-center">
-                <Users className="w-8 h-8 mr-3" />
-                For Migrant Workers
-              </h3>
-              <ul className="space-y-3">
-                {workerBenefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <div className="grid md:grid-cols-2 gap-12">
+                  {/* Worker Benefits */}
+                  <div className="bg-blue-50 p-8 rounded-xl shadow-lg transition-all duration-300 ease-in-out transform hover:shadow-2xl hover:-translate-y-2">
+                    <h3 className="text-3xl font-semibold text-blue-900 mb-6 flex items-center">
+                      <Users className="w-10 h-10 mr-4" />
+                      For Migrant Workers
+                    </h3>
+                    <ul className="space-y-4">
+                      {workerBenefits.map((benefit) => (
+                        <li key={benefit} className="flex items-start text-lg">
+                          <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0 animate-checkmark" />
+                          <span className="text-gray-700">{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-            {/* Employer Benefits */}
-            <div className="bg-green-50 p-8 rounded-lg">
-              <h3 className="text-2xl font-semibold text-green-900 mb-6 flex items-center">
-                <Shield className="w-8 h-8 mr-3" />
-                For Employers
-              </h3>
-              <ul className="space-y-3">
-                {employerBenefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
+                  {/* Employer Benefits */}
+                  <div className="bg-green-50 p-8 rounded-xl shadow-lg transition-all duration-300 ease-in-out transform hover:shadow-2xl hover:-translate-y-2">
+                    <h3 className="text-3xl font-semibold text-green-900 mb-6 flex items-center">
+                      <Shield className="w-10 h-10 mr-4" />
+                      For Employers
+                    </h3>
+                    <ul className="space-y-4">
+                      {employerBenefits.map((benefit) => (
+                        <li key={benefit} className="flex items-start text-lg">
+                          <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0 animate-checkmark" />
+                          <span className="text-gray-700">{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          );
+        })()}
       </section>
 
       {/* Important Notice */}
-      <section className="py-16 bg-red-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <AlertTriangle className="w-16 h-16 mx-auto mb-6" />
-          <h2 className="text-3xl font-bold mb-6">
-            Important Notice
-          </h2>
-          <div className="max-w-4xl mx-auto space-y-4 text-lg">
-            <p>
-              <strong>Mandatory Registration:</strong> All migrant workers must register on this portal and submit their health records before starting work in Kerala.
-            </p>
-            <p>
-              <strong>Health Checkups:</strong> Workers will be called for mandatory health checkups via SMS notifications. Non-compliance may result in work restrictions.
-            </p>
-            <p>
-              <strong>Medical Records:</strong> All medical history, prescriptions, and test results will be updated on the portal for better healthcare delivery.
-            </p>
-            <p>
-              <strong>Emergency Access:</strong> Health ID and QR code provide instant access to medical records during emergencies.
-            </p>
-          </div>
-        </div>
+      <section className="py-20 bg-red-600 text-white pulse-bg-animation">
+        {(() => {
+          const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+          return (
+            <div ref={ref} className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="container mx-auto px-4 text-center">
+                <AlertTriangle className="w-20 h-20 mx-auto mb-6 animate-pulse" />
+                <h2 className="text-4xl font-bold mb-6">
+                  Important Notice
+                </h2>
+                <div className="max-w-4xl mx-auto space-y-5 text-lg">
+                  <p>
+                    <strong>Registration:</strong> All migrant workers are encouraged to register on this portal and submit their health records.
+                  </p>
+                  <p>
+                    <strong>Health Checkups:</strong> Workers will be called for mandatory health checkups via SMS notifications. Non-compliance may result in work restrictions.
+                  </p>
+                  <p>
+                    <strong>Medical Records:</strong> All medical history, prescriptions, and test results will be updated on the portal for better healthcare delivery.
+                  </p>
+                  <p>
+                    <strong>Emergency Access:</strong> Health ID and QR code provide instant access to medical records during emergencies.
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-blue-800 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Start Your Registration Now
+      <section className="py-20 bg-blue-800 text-white">
+        <div className ="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-6">
+            Secure Your Health, Secure Your Future
           </h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Complete your mandatory health registration and get your Health ID to start working in Kerala safely.
+          <p className="text-xl mb-10 max-w-3xl mx-auto">
+            Complete your mandatory health registration today and get your Health ID to start working in Kerala safely and with peace of mind.
           </p>
           {!user && (
             <Link
               to="/register"
-              className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold text-lg inline-flex items-center transition-colors"
+              className="bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-lg font-bold text-xl inline-flex items-center transition-transform transform hover:scale-105 shadow-lg shimmer-effect"
             >
-              <Clock className="w-6 h-6 mr-3" />
+              <Clock className="w-7 h-7 mr-3" />
               Register Now - It's Mandatory
-              <ArrowRight className="w-6 h-6 ml-3" />
+              <ArrowRight className="w-7 h-7 ml-3" />
             </Link>
           )}
         </div>

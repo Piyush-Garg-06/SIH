@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MdCheckCircle, MdInfo, MdLocalHospital, MdFamilyRestroom, MdPregnantWoman, MdElderly } from 'react-icons/md';
+import { CheckCircle, Info, Hospital, Users, HeartPulse, PersonStanding, Phone } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 
 const GovernmentSchemes = () => {
@@ -10,8 +10,8 @@ const GovernmentSchemes = () => {
   const schemes = [
     {
       id: 'ayushman-bharat',
-      name: 'Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana',
-      icon: MdLocalHospital,
+      name: 'Ayushman Bharat - PMJAY',
+      icon: Hospital,
       coverage: '₹5,00,000 per family per year',
       description: 'Cashless treatment at empaneled hospitals for secondary and tertiary care',
       benefits: [
@@ -26,7 +26,7 @@ const GovernmentSchemes = () => {
     {
       id: 'rashtriya-swasthya-bima-yojana',
       name: 'Rashtriya Swasthya Bima Yojana (RSBY)',
-      icon: MdFamilyRestroom,
+      icon: Users,
       coverage: '₹30,000 per family per year',
       description: 'Health insurance scheme for Below Poverty Line (BPL) families',
       benefits: [
@@ -41,7 +41,7 @@ const GovernmentSchemes = () => {
     {
       id: 'janani-suraksha-yojana',
       name: 'Janani Suraksha Yojana (JSY)',
-      icon: MdPregnantWoman,
+      icon: HeartPulse,
       coverage: '₹1,400 - ₹1,000 (varies by state)',
       description: 'Safe delivery and postnatal care for pregnant women',
       benefits: [
@@ -56,7 +56,7 @@ const GovernmentSchemes = () => {
     {
       id: 'national-health-mission',
       name: 'National Health Mission (NHM)',
-      icon: MdInfo,
+      icon: Info,
       coverage: 'Free healthcare services',
       description: 'Comprehensive healthcare services at primary, secondary and tertiary levels',
       benefits: [
@@ -71,7 +71,7 @@ const GovernmentSchemes = () => {
     {
       id: 'national-programme-elderly',
       name: 'National Programme for Health Care of the Elderly (NPHCE)',
-      icon: MdElderly,
+      icon: PersonStanding,
       coverage: 'Free geriatric care',
       description: 'Comprehensive healthcare for elderly citizens',
       benefits: [
@@ -136,7 +136,7 @@ const GovernmentSchemes = () => {
                 <ul className="text-sm text-gray-600 space-y-1">
                   {scheme.benefits.slice(0, 3).map((benefit, index) => (
                     <li key={index} className="flex items-center">
-                      <MdCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
                       {benefit}
                     </li>
                   ))}
@@ -196,7 +196,7 @@ const GovernmentSchemes = () => {
                   <ul className="space-y-2">
                     {selectedScheme.benefits.map((benefit, index) => (
                       <li key={index} className="flex items-center text-gray-700">
-                        <MdCheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                         {benefit}
                       </li>
                     ))}
@@ -239,21 +239,21 @@ const GovernmentSchemes = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="text-center">
             <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-              📞
+              <Phone />
             </div>
             <h3 className="font-medium text-blue-900 mb-1">Helpline</h3>
             <p className="text-sm text-blue-700">Call 1800-XXX-XXXX for assistance</p>
           </div>
           <div className="text-center">
             <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-              🏥
+              <Hospital />
             </div>
             <h3 className="font-medium text-blue-900 mb-1">Health Centers</h3>
             <p className="text-sm text-blue-700">Visit nearest government health center</p>
           </div>
           <div className="text-center">
             <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-              📱
+              <Info />
             </div>
             <h3 className="font-medium text-blue-900 mb-1">Online Portal</h3>
             <p className="text-sm text-blue-700">Apply through official government portals</p>
