@@ -82,6 +82,33 @@ const Home = () => {
     }
   ];
 
+  const importantNotices = [
+    {
+      icon: UserCheck, // Using UserCheck for Registration
+      title: 'Registration',
+      description: 'All migrant workers are encouraged to register on this portal and submit their health records.',
+      color: 'blue'
+    },
+    {
+      icon: Stethoscope, // Using Stethoscope for Health Checkups
+      title: 'Health Checkups',
+      description: 'Workers will be called for mandatory health checkups via SMS notifications. Non-compliance may result in work restrictions.',
+      color: 'green'
+    },
+    {
+      icon: FileText, // Using FileText for Medical Records
+      title: 'Medical Records',
+      description: 'All medical history, prescriptions, and test results will be updated on the portal for better healthcare delivery.',
+      color: 'purple'
+    },
+    {
+      icon: QrCode, // Using QrCode for Emergency Access
+      title: 'Emergency Access',
+      description: 'Health ID and QR code provide instant access to medical records during emergencies.',
+      color: 'orange'
+    }
+  ];
+
   const workerBenefits = [
     'Free health checkups and consultations',
     'Access to government health schemes',
@@ -128,6 +155,9 @@ const Home = () => {
 
     return (
     <div className="overflow-x-hidden">
+      {/* Background decorative blobs */}
+      <div className="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/3 w-[40rem] h-[40rem] bg-gradient-to-br from-indigo-200 to-green-200 rounded-full opacity-50 blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 w-[40rem] h-[40rem] bg-gradient-to-tl from-orange-200 to-yellow-200 rounded-full opacity-50 blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
 
       {/* Hero Section */}
       <div className="relative overflow-hidden">
@@ -167,7 +197,8 @@ const Home = () => {
       </div>
 
       {/* Mandatory Steps Section */}
-      <section className="py-20 bg-white">
+            {/* Mandatory Steps Section */}
+      <section className="py-20 bg-gray-200">
         {(() => {
           const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
           return (
@@ -227,7 +258,7 @@ const Home = () => {
       </section>
 
       {/* System Features */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-200">
         {(() => {
           const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
           return (
@@ -265,7 +296,7 @@ const Home = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-200">
         {(() => {
           const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
           return (
@@ -315,29 +346,36 @@ const Home = () => {
       </section>
 
       {/* Important Notice */}
-      <section className="py-20 bg-red-600 text-white pulse-bg-animation">
+      <section className="py-20 bg-gray-100 text-gray-800">
         {(() => {
           const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
           return (
             <div ref={ref} className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="container mx-auto px-4 text-center">
-                <AlertTriangle className="w-20 h-20 mx-auto mb-6 animate-pulse" />
-                <h2 className="text-4xl font-bold mb-6">
+                <h2 className="text-4xl text-red-900 font-bold mb-6 flex items-center justify-center underline">
+                  <AlertTriangle className="w-10 h-10 mr-4" />
                   Important Notice
                 </h2>
-                <div className="max-w-4xl mx-auto space-y-5 text-lg">
-                  <p>
-                    <strong>Registration:</strong> All migrant workers are encouraged to register on this portal and submit their health records.
-                  </p>
-                  <p>
-                    <strong>Health Checkups:</strong> Workers will be called for mandatory health checkups via SMS notifications. Non-compliance may result in work restrictions.
-                  </p>
-                  <p>
-                    <strong>Medical Records:</strong> All medical history, prescriptions, and test results will be updated on the portal for better healthcare delivery.
-                  </p>
-                  <p>
-                    <strong>Emergency Access:</strong> Health ID and QR code provide instant access to medical records during emergencies.
-                  </p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
+                  {importantNotices.map((notice, index) => {
+                    const Icon = notice.icon;
+                    const colorClasses = {
+                      blue: 'bg-blue-100 text-blue-600',
+                      green: 'bg-green-100 text-green-600',
+                      purple: 'bg-purple-100 text-purple-600',
+                      orange: 'bg-orange-100 text-orange-600'
+                    };
+
+                    return (
+                      <div key={notice.title} className="group bg-white p-6 rounded-xl shadow-lg text-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl" style={{ transitionDelay: `${index * 100}ms` }}>
+                        <div className={`w-16 h-16 ${colorClasses[notice.color]} rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg transition-transform duration-300 group-hover:scale-110`}>
+                          <Icon className="w-8 h-8 transition-transform duration-300 group-hover:rotate-6" />
+                        </div>
+                        <h3 className="text-xl font-semibold text-blue-900 mb-2">{notice.title}</h3>
+                        <p className="text-gray-700">{notice.description}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -346,7 +384,7 @@ const Home = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-blue-800 text-white">
+      <section className="py-20 bg-white text-gray-800">
         <div className ="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">
             Secure Your Health, Secure Your Future
@@ -357,7 +395,7 @@ const Home = () => {
           {!user && (
             <Link
               to="/register"
-              className="bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-lg font-bold text-xl inline-flex items-center transition-transform transform hover:scale-105 shadow-lg shimmer-effect"
+              className="bg-green-600 hover:bg-green-700 text-white px-10 py-5 rounded-lg font-bold text-xl inline-flex items-center transition-transform transform hover:scale-105 shadow-lg shimmer-effect"
             >
               <Clock className="w-7 h-7 mr-3" />
               Register Now - It's Mandatory

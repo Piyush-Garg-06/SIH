@@ -14,19 +14,19 @@ const Header = () => {
       <GovernmentBanner />
       <header className="bg-white shadow-md sticky top-0 z-40">
         <div className="container mx-auto px-4 flex items-center py-3">
-          {/* Logo and Text - centered */}
-          <div className="flex items-center space-x-4 flex-grow justify-center pl-4">
-            <img
-              src="http://static.photos/government/120x120/1"
-              alt="Kerala Government Logo"
-              className="h-12 md:h-16"
-            />
-            <div>
-              <h1 className="text-xl md:text-2xl font-bold text-blue-900">Kerala Migrant Workers</h1>
-              <h2 className="text-md md:text-lg font-semibold text-blue-800">
-                Digital Health Record Management System
-              </h2>
-            </div>
+          {/* Logo - leftmost */}
+          <img
+            src="http://static.photos/government/120x120/1"
+            alt="Kerala Government Logo"
+            className="h-12 md:h-16"
+          />
+
+          {/* Text - centered */}
+          <div className="flex-grow text-center">
+            <h1 className="text-xl md:text-2xl font-bold text-blue-900">Kerala Migrant Workers</h1>
+            <h2 className="text-md md:text-lg font-semibold text-blue-800">
+              Digital Health Record Management System
+            </h2>
           </div>
 
           {/* Right side: Login/Register and Mobile Menu Button */}
