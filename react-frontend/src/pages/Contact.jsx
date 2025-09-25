@@ -41,14 +41,16 @@ const Contact = () => {
 
   return (
     <div className="container mx-auto px-4 py-16 bg-gray-50">
-      <motion.h1
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, type: 'spring', stiffness: 120 }}
-        className="text-5xl font-bold text-center text-gray-800 mb-12"
-      >
-        Contact Us
-      </motion.h1>
+      <div className="text-center">
+        <motion.h1
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, type: 'spring', stiffness: 120 }}
+          className="text-4xl md:text-5xl font-bold mb-4 transition-all duration-700 ease-in-out bg-gradient-to-r from-blue-900 to-green-600 bg-clip-text text-transparent"
+        >
+          Contact Us
+        </motion.h1>
+      </div>
       <motion.div
         variants={containerVariants}
         initial="hidden"

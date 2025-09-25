@@ -281,9 +281,9 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      <div className="bg-gradient-to-r from-white to-blue-50 shadow-sm border-b transition-all duration-300">
         <div className="container mx-auto px-4 py-6">
           <div className="flex justify-between items-center">
             <div>
@@ -314,7 +314,7 @@ const Dashboard = () => {
           {dashboardData.stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <div key={stat.label} className="bg-white p-6 rounded-lg shadow-sm border">
+              <div key={stat.label} className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-lg shadow-sm border hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-600">{stat.label}</p>
@@ -361,7 +361,7 @@ const Dashboard = () => {
                 <Link
                   key={card.title}
                   to={card.path}
-                  className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow block"
+                  className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-lg shadow-sm border hover:shadow-lg transition-all duration-300 transform hover:scale-105 block"
                 >
                   <div className={`w-12 h-12 ${getStatColor(card.color)} rounded-lg flex items-center justify-center mb-4`}>
                     <Icon className="w-6 h-6" />
@@ -375,7 +375,7 @@ const Dashboard = () => {
         </div>
 
         {/* Additional Actions */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border">
+        <div className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-lg shadow-sm border hover:shadow-lg transition-all duration-300">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Additional Actions</h2>
           <div className="grid md:grid-cols-3 gap-4">
             <button className="bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition-colors">

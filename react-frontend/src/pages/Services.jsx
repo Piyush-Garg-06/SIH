@@ -62,7 +62,7 @@ const Services = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-bold mb-4 text-gray-900"
+            className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-900 to-green-600 bg-clip-text text-transparent"
           >
             Comprehensive Healthcare Services
           </motion.h1>
