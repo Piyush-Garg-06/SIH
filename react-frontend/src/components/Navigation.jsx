@@ -75,11 +75,16 @@ const Navigation = ({ isSidebarOpen, setSidebarOpen }) => {
       <nav style={{ backgroundColor: '#00d5b1' }} className="text-white hidden md:block">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center py-3">
-              <Link to="/" className="text-xl font-bold mr-6">
+            {/* Left: Logo */}
+            <div className="flex-1 flex justify-start">
+              <Link to="/" className="text-xl font-bold">
                 Kerala Health Portal
               </Link>
-              <ul className="flex space-x-4">
+            </div>
+
+            {/* Center: Navigation Links */}
+            <div className="flex-1 flex justify-center pl-20">
+              <ul className="flex space-x-8">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = location.pathname === item.path;
@@ -99,7 +104,9 @@ const Navigation = ({ isSidebarOpen, setSidebarOpen }) => {
                 })}
               </ul>
             </div>
-            <div className="flex items-center space-x-4">
+
+            {/* Right: User Info & Logout */}
+            <div className="flex-1 flex justify-end items-center space-x-4">
               {user && (
                 <>
                   <div className="flex items-center space-x-2">
