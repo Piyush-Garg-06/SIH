@@ -61,6 +61,13 @@ const Navigation = ({ isSidebarOpen, setSidebarOpen }) => {
           { path: '/health-monitoring', label: 'Health Monitoring', icon: Shield },
           { path: '/reports', label: 'System Reports', icon: FileText },
         ];
+      case 'emitra':
+        return [
+          { path: '/emitra', label: 'Dashboard', icon: Home },
+          { path: '/emitra/status', label: 'Check Status', icon: FileText },
+          { path: '/notifications', label: 'Notifications', icon: Bell },
+          { path: '/emitra/profile', label: 'Profile', icon: User },
+        ];
       default:
         return [];
     }

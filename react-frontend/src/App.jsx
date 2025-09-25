@@ -20,6 +20,9 @@ import HealthCheckups from './pages/HealthCheckups';
 import Reports from './pages/Reports';
 import SeverityAssessment from './pages/SeverityAssessment';
 import Workers from './pages/Workers';
+import Emitra from './pages/Emitra';
+import EmitraStatus from './pages/EmitraStatus';
+import EmitraProfile from './pages/EmitraProfile';
 // import './App.css';
 
 function App() {
@@ -48,6 +51,9 @@ function App() {
               <Route path="/reports" element={<Reports />} />
               <Route path="/severity-assessment" element={<SeverityAssessment />} />
               <Route path="/workers" element={<Workers />} />
+              <Route path="/emitra" element={<Emitra />} />
+              <Route path="/emitra/status" element={<EmitraStatus />} />
+              <Route path="/emitra/profile" element={<EmitraProfile />} />
             </Routes>
           </main>
           <Footer />

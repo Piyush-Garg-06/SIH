@@ -63,7 +63,11 @@ const Login = () => {
       };
 
       login(userData);
-      navigate('/dashboard');
+      if (formData.userType === 'emitra') {
+        navigate('/emitra');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (error) {
       console.error('Login failed:', error);
     } finally {
@@ -198,6 +202,7 @@ const Login = () => {
                         <option value="doctor">Doctor/Healthcare Provider</option>
                         <option value="employer">Employer/Manager</option>
                         <option value="admin">Administrator</option>
+                        <option value="emitra">e-Mitra Operator</option>
                       </select>
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <div className="text-blue-600">
